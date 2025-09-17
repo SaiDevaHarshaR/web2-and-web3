@@ -8,7 +8,7 @@ app.post("/sum", (req, res) => {
 
     const result = a + b;
 
-    res.json({sum: result});
+    res.json({answer: result});
 
 });
 app.listen(3000, () => {
@@ -26,10 +26,15 @@ import axios from 'axios';
 
 describe("test the sum function", () => {
 it("should return 3 when 1+2", () => {
-axios.post("http://localhost:3000/sum", {a:1, b:2}).then((res) => {
-expect(res.data.sum).toBe(3);
+
+//axios.post("http://localhost:3000/sum", {a:1, b:2}).then((res) => {
+const res = await request(app).post("/sum").send({a:1, b:2}).then((res) => {
+
+expect(res.body.sum).toBe(3);
+expect(res.status).toBe(200);
 })
 
 })
 
+//run npm test
 ```
