@@ -21,6 +21,8 @@ the test file as follows:
 
 import { describe, it} from '@jest/globals';
 import {app} from './D-2';
+import request from  'supertest';
+import axios from 'axios';
 
 describe("test the sum function", () => {
 it("should return 3 when 1+2", () => {
